@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <link href="../../css/main.scss" th:href="@{/css/main.scss}" rel="stylesheet">
+</head>
+<body>
+<header th:insert="~{blocks/header :: header}"></header>
+<div class="container mt-5 col-xs-12">
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <canvas id="coordinates" style="width: 100%">
+
+            </canvas>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-12 position-relative">
+                    <label for="X" class="form-label">Введите значение для X</label>
+                    <input type="text" class="form-control" id="X" value="" required>
+                    <!--                            <div class="valid-tooltip">-->
+                    <!--                                Все хорошо!-->
+                    <!--                            </div>-->
+                </div>
+                <div class="col-12 position-relative">
+                    <label for="Y" class="form-label">Введите значение для Y</label>
+                    <input type="text" class="form-control" id="Y" value="" required>
+                    <!--                            <div class="valid-tooltip">-->
+                    <!--                                Все хорошо!-->
+                    <!--                            </div>-->
+                </div>
+                <div class="col-12 position-relative">
+                    <label for="R" class="form-label">Введите значение для R</label>
+                    <input type="text" class="form-control" id="R" value="" required>
+                    <!--                            <div class="valid-tooltip">-->
+                    <!--                                Все хорошо!-->
+                    <!--                            </div>-->
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Отправить форму</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/CoordinatePlane.js"></script>
+</body>
+</html>
