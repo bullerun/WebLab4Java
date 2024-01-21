@@ -1,25 +1,24 @@
 package ryskal.nikita.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ryskal.nikita.models.Point;
-import ryskal.nikita.repositories.PointRepository;
+import ryskal.nikita.requsts.AddPointRequest;
+import ryskal.nikita.services.PointService;
+
+import java.util.List;
 
 
 @Controller
+@RequiredArgsConstructor
 public class MainController {
-    @Autowired
-    private PointRepository pointRepository;
+    private final PointService pointService;
 
-    @GetMapping("/")
-    public String main(Model model) {
-        Iterable<Point> points = pointRepository.findAll();
-        model.addAttribute("points", points);
-        return "index";
+    @PostMapping("/addpoint")
+    public ResponseEntity<List<Point>> addpoint(@RequestBody AddPointRequest addPointRequest) {
+        System.out.println(addPointRequest);
+        return ResponseEntity.ok(pointService.addPointToDB(addPointRequest));
     }
 }

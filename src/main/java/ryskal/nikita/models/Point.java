@@ -1,14 +1,17 @@
 package ryskal.nikita.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-
+@Builder
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "point")
 public class Point implements Serializable {
     @Id

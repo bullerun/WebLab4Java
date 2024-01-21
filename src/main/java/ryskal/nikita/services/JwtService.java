@@ -13,14 +13,16 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-    @Value("${token.signing.key}")
+    @Value("${testing.app.secret}")
     private String jwtSigningKey;
+    @Value("${testing.app.lifetime}")
+    private long lifeTime;
 
     public String generateToken(UserDetails user) {
         return Jwts.builder()
                 .subject(user.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 100000 * 60 * 24))
+                .expiration(new Date(System.currentTimeMillis() + lifeTime * 60 * 24))
                 .signWith(getSigningKey())
                 .compact();
     }
